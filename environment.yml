@@ -2,6 +2,7 @@ name: gtfsrt
 channels:
   - conda-forge
 dependencies:
+  - requests
   - pandas
   - duckdb 
   - protobuf

@@ -13,4 +13,4 @@ source /home/zbv/miniforge3/etc/profile.d/conda.sh
 conda activate gtfsrt
 
 # 3. Run your script using absolute paths
-time python "$PROJ_DIR/src/download_gtfs_realtime.py" "$PROJ_DIR/output/gtfs-realtime/gtfs-rt" "$PROJ_DIR/config.json"
+time python "$PROJ_DIR/src/download_gtfs_realtime.py" "$PROJ_DIR/output/gtfs-realtime/gtfs-rt" "$PROJ_DIR/config.json" --exclude_stop_updates 

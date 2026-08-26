@@ -6,10 +6,10 @@ In a typical setup, runner scripts (```runner_gtfs_schedule.sh``` and ```runner_
 
 ```
 # Download GTFS-Schedule every day at 12:01 AM
-0 1 * * * /path/to/runner_gtfs_schedule.sh
+0 1 * * * /path/to/download_sched.sh
 
 # Download GTFS-Realtime every 30 seconds
-* * * * * /path/to/download_sched.sh
+* * * * * /path/to/download_rt.sh
 * * * * * sleep 30; /path/to/download_rt.sh
 ```
 

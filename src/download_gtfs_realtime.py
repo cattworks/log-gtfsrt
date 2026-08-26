@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 ## Assumes file named .env
 load_dotenv()
 
-def main(out_dir, config_json):
+def main(out_dir, config_json, exclude_stop_updates):
 
     # Load config file as dictionary
     with open(config_json, "r") as file:
@@ -52,7 +52,7 @@ def main(out_dir, config_json):
                     headers=None
 
                 # Prep data from this agency feed to be processed in parallel
-                data = (url, headers,agency, datestr, outdir_final)
+                data = (url, headers, exclude_stop_updates, agency, datestr, outdir_final)
                 l_data.append(data)
 
         # ---
@@ -68,7 +68,7 @@ def main(out_dir, config_json):
 
 
 def _process_single_agency_feed(data_tup):
-    url, headers, agency, datestr, outdir_final = data_tup
+    url, headers, exclude_stop_updates, agency, datestr, outdir_final = data_tup
     response = requests.get(url, headers=headers)
     
     ##----------------------
@@ -77,6 +77,8 @@ def _process_single_agency_feed(data_tup):
 
     df_updates = _gtfsrt_df(response.content, entity_type='trip_updates')
     if df_updates is not None:
+        if exclude_stop_updates:
+            df_updates['trip_update.stop_time_update'] = '<omitted>'
         outfile_updates = os.path.join(outdir_final, '{}-tripupdates-{}.csv.gz'.format(agency, datestr))   
         _write_csv_gzip(df_updates, outfile_updates)
 
@@ -137,11 +139,11 @@ def _gtfsrt_df(bytes, entity_type):
 
 def _write_csv_gzip(df, outfile):
     if not os.path.exists(outfile):
-        df.to_csv(outfile, index=False, header=True, mode='w', compression={'method': 'gzip', 'compresslevel':1})
+        df.to_csv(outfile, index=False, header=True, mode='w', compression={'method': 'gzip', 'compresslevel':6})
     else: # if it already exists
         # Append to existing file and don't use header
         columns_ordered = pd.read_csv(outfile, nrows=0).columns.tolist()
-        df[columns_ordered].to_csv(outfile, index=False, header=False, mode='a', compression={'method': 'gzip', 'compresslevel':1})
+        df[columns_ordered].to_csv(outfile, index=False, header=False, mode='a', compression={'method': 'gzip', 'compresslevel':6})
 
 
 if __name__ == "__main__":
@@ -149,6 +151,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("out_dir", help="Output directory")
     parser.add_argument("config_json", help="JSON config file with feed info")
+    parser.add_argument("--exclude_stop_updates", action="store_true",
+                    help="Omit trip_update.stop_time_update from trip_updates")
     args = parser.parse_args()
 
-    main(args.out_dir, args.config_json)
+    main(args.out_dir, args.config_json, args.exclude_stop_updates)
