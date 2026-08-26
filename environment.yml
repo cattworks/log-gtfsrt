@@ -1,0 +1,14 @@
+name: gtfsrt
+channels:
+  - conda-forge
+dependencies:
+  - pandas
+  - duckdb 
+  - protobuf
+  - pytz
+  - python-dotenv
+  - pip 
+  - pip:
+      - gtfs-realtime-bindings==1.0.0
+
+      
