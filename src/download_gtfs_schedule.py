@@ -19,7 +19,15 @@ def main(out_dir, config_json):
     for agency_info in config:
         agency = agency_info['agency']
         local_tz = agency_info['tz-local']
-        url = agency_info['gtfs-schedule']['url']
+        sched_feed = agency_info['gtfs-schedule']
+        url = sched_feed['url']
+        auth_header = sched_feed.get('auth-header')
+        if auth_header:  # need to look up API key in dot file 
+            apikey_label = sched_feed['apikey-label']
+            api_key = os.getenv(apikey_label)
+            headers = {auth_header: api_key}
+        else:
+            headers=None
 
         # Get today's date in local time
         now = datetime.datetime.now(tz=pytz.timezone(local_tz))
@@ -32,7 +40,7 @@ def main(out_dir, config_json):
 
         # Download to output file
         outfile = os.path.join(outdir_final, '{}-gtfs-{}.zip'.format(agency, datestr))
-        r = requests.get(url, headers=None)
+        r = requests.get(url, headers=headers)
         with open(outfile, "wb") as f:
             f.write(r.content)
 

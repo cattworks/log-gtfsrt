@@ -1,0 +1,50 @@
+[
+   {
+        "agency": "wmata-bus", 
+        "tz-local": "US/Eastern",
+        "gtfs-schedule": {
+            "url": "https://api.wmata.com/gtfs/bus-gtfs-static.zip"
+        },
+        "gtfs-rt": [
+            {
+                "url": "https://api.wmata.com/gtfs/bus-gtfsrt-vehiclepositions.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            },
+            {
+                "url": "https://api.wmata.com/gtfs/bus-gtfsrt-tripupdates.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            },
+            {
+                "url": "https://api.wmata.com/gtfs/bus-gtfsrt-alerts.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            }
+        ]        
+    },
+    {
+        "agency": "wmata-rail", 
+        "tz-local": "US/Eastern",
+        "gtfs-schedule": {
+            "url": "https://api.wmata.com/gtfs/rail-gtfs-static.zip"
+        },
+        "gtfs-rt": [
+            {
+                "url": "https://api.wmata.com/gtfs/rail-gtfsrt-vehiclepositions.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            },
+            {
+                "url": "https://api.wmata.com/gtfs/rail-gtfsrt-tripupdates.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            },
+            {
+                "url": "https://api.wmata.com/gtfs/rail-gtfsrt-alerts.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            }
+        ]        
+    }
+]

@@ -1,0 +1,160 @@
+[
+    {
+        "agency": "mta-localbus", 
+        "tz-local": "US/Eastern",
+        "gtfs-schedule": {
+            "url": "https://feeds.mta.maryland.gov/gtfs/local-bus"
+        },
+        "gtfs-rt": [
+            {
+                "url": "https://api.goswift.ly/real-time/mta-maryland/gtfs-rt-vehicle-positions",
+                "auth-header": "Authorization",
+                "apikey-label": "SWIFTLY_KEY"
+            },
+            {
+                "url": "https://api.goswift.ly/real-time/mta-maryland/gtfs-rt-trip-updates",
+                "auth-header": "Authorization",
+                "apikey-label": "SWIFTLY_KEY"
+            },
+            {
+                "url": "https://feeds.mta.maryland.gov/alerts.pb"
+            }
+        ]
+    },
+    {
+        "agency": "mta-lightrail", 
+        "tz-local": "US/Eastern",
+        "gtfs-schedule": {
+            "url": "https://feeds.mta.maryland.gov/gtfs/light-rail"
+        },
+        "gtfs-rt": [
+            {
+                "url": "https://api.goswift.ly/real-time/mta-maryland-light-rail/gtfs-rt-vehicle-positions",
+                "auth-header": "Authorization",
+                "apikey-label": "SWIFTLY_KEY"
+            },
+            {
+                "url": "https://api.goswift.ly/real-time/mta-maryland-light-rail/gtfs-rt-trip-updates",
+                "auth-header": "Authorization",
+                "apikey-label": "SWIFTLY_KEY"
+            },
+            {
+                "url": "https://feeds.mta.maryland.gov/alerts.pb"
+            }
+        ]        
+    },
+    {
+        "agency": "mta-metro", 
+        "tz-local": "US/Eastern",
+        "gtfs-schedule": {
+            "url": "https://feeds.mta.maryland.gov/gtfs/metro"
+        },
+        "gtfs-rt": [
+            {
+                "url": "https://api.goswift.ly/real-time/mta-maryland-metro/gtfs-rt-vehicle-positions",
+                "auth-header": "Authorization",
+                "apikey-label": "SWIFTLY_KEY"
+            },
+            {
+                "url": "https://api.goswift.ly/real-time/mta-maryland-metro/gtfs-rt-trip-updates",
+                "auth-header": "Authorization",
+                "apikey-label": "SWIFTLY_KEY"
+            },
+            {
+                "url": "https://feeds.mta.maryland.gov/alerts.pb"
+            }
+        ]        
+    },
+    {
+        "agency": "mta-commuterbus", 
+        "tz-local": "US/Eastern",
+        "gtfs-schedule": {
+            "url": "https://feeds.mta.maryland.gov/gtfs/commuter-bus"
+        },
+        "gtfs-rt": [
+            {
+                "url": "https://api.goswift.ly/real-time/mta-maryland-commuter-bus/gtfs-rt-vehicle-positions",
+                "auth-header": "Authorization",
+                "apikey-label": "SWIFTLY_KEY"
+            },
+            {
+                "url": "https://api.goswift.ly/real-time/mta-maryland-commuter-bus/gtfs-rt-trip-updates",
+                "auth-header": "Authorization",
+                "apikey-label": "SWIFTLY_KEY"
+            },
+            {
+                "url": "https://feeds.mta.maryland.gov/alerts.pb"
+            }
+        ]        
+    },
+    {
+        "agency": "mta-marc", 
+        "tz-local": "US/Eastern",
+        "gtfs-schedule": {
+            "url": "https://feeds.mta.maryland.gov/gtfs/marc"
+        },
+        "gtfs-rt": [
+            {
+                "url": "https://mdotmta-gtfs-rt.s3.amazonaws.com/MARC+RT/marc-vp.pb"
+            },
+            {
+                "url": "https://mdotmta-gtfs-rt.s3.amazonaws.com/MARC+RT/marc-tu.pb"
+            },
+            {
+                "url": "https://feeds.mta.maryland.gov/alerts.pb"
+            }
+        ]        
+    },
+    {
+        "agency": "wmata-bus", 
+        "tz-local": "US/Eastern",
+        "gtfs-schedule": {
+            "url": "https://api.wmata.com/gtfs/bus-gtfs-static.zip",
+            "auth-header": "api_key",
+            "apikey-label": "WMATA_KEY"
+        },
+        "gtfs-rt": [
+            {
+                "url": "https://api.wmata.com/gtfs/bus-gtfsrt-vehiclepositions.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            },
+            {
+                "url": "https://api.wmata.com/gtfs/bus-gtfsrt-tripupdates.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            },
+            {
+                "url": "https://api.wmata.com/gtfs/bus-gtfsrt-alerts.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            }
+        ]        
+    },
+    {
+        "agency": "wmata-rail", 
+        "tz-local": "US/Eastern",
+        "gtfs-schedule": {
+            "url": "https://api.wmata.com/gtfs/rail-gtfs-static.zip",
+            "auth-header": "api_key",
+            "apikey-label": "WMATA_KEY"
+        },
+        "gtfs-rt": [
+            {
+                "url": "https://api.wmata.com/gtfs/rail-gtfsrt-vehiclepositions.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            },
+            {
+                "url": "https://api.wmata.com/gtfs/rail-gtfsrt-tripupdates.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            },
+            {
+                "url": "https://api.wmata.com/gtfs/rail-gtfsrt-alerts.pb",
+                "auth-header": "api_key",
+                "apikey-label": "WMATA_KEY"
+            }
+        ]        
+    }
+]
